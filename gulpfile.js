@@ -1,20 +1,9 @@
 const { src, dest, watch } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const browserSync = require('browser-sync').create();
-const gulpStylelint = require('gulp-stylelint');
 
 function style() {
   return src('./css/**/*.scss')
-    .pipe(
-      gulpStylelint({
-        reporters: [
-          {
-            formatter: 'string',
-            console: false,
-          },
-        ],
-      }),
-    )
     .pipe(sass().on('error', sass.logError))
     .pipe(dest('./css/'))
     .pipe(browserSync.stream());
