@@ -63,6 +63,7 @@ body {
 
 .btn {
   @include quicksand;
+  display: inline-block;
   font-weight: $fw-bold;
   font-size: $fs-sm;
   margin: 0;
@@ -73,6 +74,7 @@ body {
   border-radius: 2px;
   transition: $transition;
   box-sizing: border-box;
+  white-space: nowrap;
 
   &--primary {
     color: #3a79ff;
@@ -89,6 +91,15 @@ body {
 
     &:hover {
       background-color: darken(#ffd7d7, 5%);
+    }
+  }
+
+  &--grayscale {
+    color: #7382a3;
+    background-color: #e8ecf4;
+
+    &:hover {
+      background-color: darken(#4c85ff, 5%);
     }
   }
 
@@ -145,6 +156,7 @@ h5 {
   @include roboto();
   font-size: 10px;
   margin-bottom: $base * 4;
+  text-transform: uppercase;
 }
 
 .ta-c {
@@ -713,7 +725,7 @@ h5 {
       left: 50%;
       width: $base * 15;
       height: $height;
-      margin-top: -$height / 2;
+      margin-top: -30px;
       border-radius: 100%;
       overflow: hidden;
       background-color: #fff;
@@ -724,8 +736,75 @@ h5 {
 // === / QUOTES ===
 
 // === FAQ ===
-// .section-faq {
-// }
+.section-faq {
+  h4 {
+    font-weight: $fw-medium;
+  }
+}
+
+.faq-accordion {
+  @include list-null;
+
+  &__item {
+    $parent: &;
+    border: 1px solid #d8e3fe;
+
+    &--active {
+      .arrow {
+         stroke: #495274;
+      }
+
+      #{$parent}-trigger {
+        color: #495274;
+        font-weight: $fw-bold;
+
+        &-icon {
+          transform: rotate(0);
+        }
+      }
+
+      #{$parent}-content {
+        display: flex;
+      }
+    }
+
+    &-trigger {
+      display: flex;
+      cursor: pointer;
+      padding: $base * 4;
+
+      &-icon {
+        width: $base * 4;
+        margin-right: $base * 4;
+        text-align: center;
+        transform: rotate(180deg);
+
+        .arrow {
+          stroke: #8e96b7;
+        }
+      }
+
+      &-text {
+        font-size: $fs-md;
+      }
+    }
+
+    &-content {
+      display: none;
+      padding: 0 $base * 4 $base * 4 $base * 12;
+
+      &-text {
+        flex-grow: 1;
+        line-height: 2;
+        font-size: $fs-md;
+      }
+
+      &-btn {
+        margin-left: $base * 15;
+      }
+    }
+  }
+}
 // === / FAQ ===
 
 // === GET-STARTED ===
