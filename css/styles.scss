@@ -59,7 +59,7 @@ body {
   &--wide {
     max-width: 1200px;
   }
-} 
+}
 
 .input {
   padding: $base * 3 $base * 4;
@@ -71,7 +71,7 @@ body {
 
   &--size-lg {
     padding: $base * 5 $base * 6;
-    border-radius: 5px;
+    border-radius: $base;
   }
 }
 
@@ -93,7 +93,7 @@ body {
 
   &--size-lg {
     padding: $base * 5 $base * 15;
-    border-radius: 5px;
+    border-radius: $base;
   }
 
   &--primary {
@@ -134,7 +134,7 @@ body {
     &-inverted {
       color: #565f82;
       background-color: #fff;
-  
+
       &:hover {
         background-color: darken(#fff, 5%);
       }
@@ -153,7 +153,7 @@ body {
     &-inverted {
       color: #c7d3ff;
       border-color: #a0b4ff;
-  
+
       &:hover {
         color: lighten(#c7d3ff, 10%);
         border-color: lighten(#a0b4ff, 5%);
@@ -172,30 +172,38 @@ h6 {
   margin: 0;
   padding: 0;
   font-weight: $fw-regular;
-  color: #3d4f9f;
 }
 
-h1,
 h2 {
-  margin-bottom: $base * 7;
-  font-size: 48px;
-}
-
-h3 {
-  margin-bottom: $base * 7;
-  font-size: 36px;
-}
-
-h4 {
-  font-size: 24px;
-  margin-bottom: $base * 20;
-}
-
-h5 {
-  @include roboto();
+  @include roboto;
   font-size: 10px;
   margin-bottom: $base * 4;
   text-transform: uppercase;
+  color: #3d4f9f;
+}
+
+// h3 {
+//   margin-bottom: $base * 7;
+//   font-size: 36px;
+// }
+
+// h4 {
+//   font-size: 24px;
+//   margin-bottom: $base * 20;
+// }
+
+// h5 {
+//   @include roboto();
+//   font-size: 10px;
+//   margin-bottom: $base * 4;
+//   text-transform: uppercase;
+// }
+
+.section-subtitle {
+  @include quicksand;
+  color: #3d4f9f;
+  margin-bottom: $base * 7;
+  font-size: 48px;
 }
 
 .ta-c {
@@ -238,6 +246,17 @@ h5 {
     border-bottom-left-radius: 0;
   }
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
 // === / COMMON ===
 
 // === HEADER ===
@@ -254,10 +273,13 @@ h5 {
 }
 
 .logo {
-  background-color: #5e81fe;
-  width: $base * 6;
-  height: $base * 6;
-  border-radius: 100%;
+  &__link {
+    display: block;
+    background-color: #5e81fe;
+    width: $base * 6;
+    height: $base * 6;
+    border-radius: 100%;
+  }
 }
 
 .nav {
@@ -352,7 +374,7 @@ h5 {
     text-align: center;
 
     &-content {
-      h2 {
+      .section-subtitle {
         font-weight: $fw-light;
 
         span {
@@ -377,7 +399,7 @@ h5 {
   height: $base * 13;
   border-radius: 100%;
   background-color: #fff;
-  box-shadow: 0 10px 50px rgba(#c9d1e7, 0.6);
+  box-shadow: 0 $base * 2 $base * 12 rgba(#c9d1e7, 0.6);
 
   svg {
     width: $base * 3;
@@ -422,7 +444,7 @@ h5 {
       left: 50%;
     }
 
-    h3 {
+    .section-subtitle {
       font-weight: $fw-light;
 
       span {
@@ -448,8 +470,9 @@ h5 {
 .section-features {
   background: url('../img/clouds.svg') no-repeat 50% 50%;
 
-  h4 {
+  .section-subtitle {
     font-weight: $fw-medium;
+    font-size: 24px;
   }
 
   .btns {
@@ -475,7 +498,7 @@ h5 {
 
     &:not(:first-child)::before {
       position: absolute;
-      top: 120px;
+      top: $base * 30;
       left: -34px;
       content: '';
       height: 1px;
@@ -495,6 +518,7 @@ h5 {
     }
 
     &-title {
+      @include roboto;
       font-weight: $fw-bold;
       font-size: $fs-md;
       color: #4074f8;
@@ -581,6 +605,11 @@ h5 {
 // === BLOG ===
 .section-blog {
   background-color: #f5f8ff;
+
+  .section-subtitle {
+    font-size: 24px;
+    font-weight: $fw-medium;
+  }
 }
 
 .slider-wrapper {
@@ -592,7 +621,7 @@ h5 {
   @include list-null;
   border: 1px solid #d8e3fe;
   background-color: #fff;
-  box-shadow: 0 15px 50px #eff4ff;
+  box-shadow: 0 $base * 3 $base * 12 #eff4ff;
 
   &__item {
     display: flex;
@@ -605,16 +634,16 @@ h5 {
 
     &-gallery {
       display: grid;
-      grid-template-columns: repeat(3, 120px);
-      grid-template-rows: repeat(2, 120px);
-      grid-gap: 15px;
+      grid-template-columns: repeat(3, $base * 30);
+      grid-template-rows: repeat(2, $base * 30);
+      grid-gap: $base * 4;
 
       .image-link {
         display: block;
         position: relative;
         overflow: hidden;
-        border-radius: 5px;
-        box-shadow: 0 15px 100px #e5ebf8;
+        border-radius: $base;
+        box-shadow: 0 $base * 4 $base * 25 #e5ebf8;
 
         .loupe {
           position: absolute;
@@ -682,7 +711,13 @@ h5 {
     }
 
     &-content {
-      margin-left: 10%;
+      margin-left: 9%;
+
+      h3 {
+        font-size: 36px;
+        margin-bottom: $base * 7;
+        color: #3d4f9f;
+      }
 
       .text {
         font-size: $fs-md;
@@ -723,7 +758,8 @@ h5 {
     display: flex;
     justify-content: space-between;
 
-    h3 {
+    .section-subtitle {
+      font-size: 36px;
       font-weight: $fw-medium;
     }
   }
@@ -749,7 +785,7 @@ h5 {
     padding: $base * 10 $base * 17 $base * 15;
     border: 1px solid #d8e3fe;
     background-color: #fff;
-    box-shadow: 0 5px 50px #f3f5fa;
+    box-shadow: 0 $base $base * 12 #f3f5fa;
 
     &-text {
       font-size: $fs-md;
@@ -776,8 +812,11 @@ h5 {
 
 // === FAQ ===
 .section-faq {
-  h4 {
-    font-weight: $fw-medium;
+  .section-inner {
+    .section-subtitle {
+      font-size: 24px;
+      font-weight: $fw-medium;
+    }
   }
 }
 
@@ -794,8 +833,10 @@ h5 {
       }
 
       #{$parent}-trigger {
-        color: #495274;
-        font-weight: $fw-bold;
+        &-text {
+          color: #495274;
+          font-weight: $fw-bold;
+        }
 
         &-icon {
           transform: rotate(0);
@@ -855,7 +896,7 @@ h5 {
 
   &::before {
     position: absolute;
-    content: "";
+    content: '';
     top: 0;
     right: 0;
     bottom: 0;
@@ -867,25 +908,25 @@ h5 {
   .section-inner {
     position: relative;
     z-index: 10;
-  }
 
-  h2,
-  h5 {
-    color: #fff;
-  }
-
-  h2 {
-    font-weight: $fw-light;
-
-    span {
-      font-weight: $fw-medium;
+    h2 {
+      color: #fff;
     }
-  }
 
-  .text {
-    max-width: 60%;
-    margin: 0 auto $base * 10;
-    line-height: 2;
+    .section-subtitle {
+      color: #fff;
+      font-weight: $fw-light;
+
+      span {
+        font-weight: $fw-medium;
+      }
+    }
+
+    .text {
+      max-width: 60%;
+      margin: 0 auto $base * 10;
+      line-height: 2;
+    }
   }
 }
 // === / GET-STARTED ===
@@ -908,6 +949,7 @@ h5 {
       font-size: $fs-lg;
       color: #3d4f9f;
       margin-bottom: $base * 4;
+      text-transform: none;
     }
 
     &-text {
@@ -924,11 +966,11 @@ h5 {
 .form-newsletter {
   display: flex;
 
-  .input {
+  &__input {
     flex-grow: 1;
   }
 
-  .btn {
+  &__btn {
     margin-left: $base * 3;
   }
 }
