@@ -270,7 +270,7 @@ h2 {
 }
 .slider-hero-image__item {
   height: 560px;
-  background-position: 50% 100%;
+  background-position: 50% 87%;
   background-size: cover;
   background-repeat: no-repeat;
   text-align: center;
@@ -438,7 +438,7 @@ h2 {
 }
 .section-stats__text {
   font-family: "Quicksand", sans-serif;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 500;
   width: 40%;
   line-height: 1.5;
@@ -482,6 +482,7 @@ h2 {
 }
 .slider-blog__item {
   display: flex;
+  justify-content: space-between;
   padding: 64px 32px;
 }
 .slider-blog__item-gallery, .slider-blog__item-content {
@@ -500,7 +501,8 @@ h2 {
   border-radius: 4px;
   box-shadow: 0 16px 100px #e5ebf8;
 }
-.slider-blog__item-gallery .image-link .loupe {
+.slider-blog__item-gallery .image-link::after {
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -513,7 +515,7 @@ h2 {
   transform: translate(-50%, -50%);
   transition: 0.2s;
 }
-.slider-blog__item-gallery .image-link:hover .loupe {
+.slider-blog__item-gallery .image-link:hover::after {
   opacity: 1;
 }
 .slider-blog__item-gallery .image-link img {
@@ -550,9 +552,6 @@ h2 {
 }
 .slider-blog__item-gallery .image-link--s-2::before {
   background: linear-gradient(transparent, #35aaff);
-}
-.slider-blog__item-content {
-  margin-left: 9%;
 }
 .slider-blog__item-content h3 {
   font-size: 36px;
@@ -626,11 +625,10 @@ h2 {
   left: 50%;
   width: 60px;
   height: 60px;
-  margin-top: -30px;
   border-radius: 100%;
   overflow: hidden;
   background-color: #fff;
-  transform: translateX(-50%);
+  transform: translate(-50%, -30px);
 }
 
 .section-faq .section-inner .section-subtitle {
@@ -738,7 +736,7 @@ h2 {
 .section-newsletter__left-title {
   font-family: "Quicksand", sans-serif;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 18px;
   color: #3d4f9f;
   margin-bottom: 16px;
   text-transform: none;
